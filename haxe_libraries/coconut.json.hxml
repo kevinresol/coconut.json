@@ -1,0 +1,3 @@
+-lib coconut.data
+-cp src
+-D coconut.json=0.0.0

@@ -1,0 +1,8 @@
+-lib tink_state
+-lib tink_lang
+-lib tink_pure
+-lib tink_anon
+-cp ${SCOPE_DIR}/../coconut.data/src
+-D coconut.data=0.10.0
+${SCOPE_DIR}/../coconut.data/extraParams.hxml
+--macro Sys.println("haxe_libraries/coconut.data.hxml:6: [Warning] Using dev version of library coconut.data")
