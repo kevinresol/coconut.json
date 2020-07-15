@@ -21,15 +21,11 @@ class Serializer {
 			
 			var def = macro class $name {
 				final cache = new Map();
-				var count = 0;
 				public function new(_) {}
-				public function prepare(model:$modelCt):coconut.json.Ref<coconut.json.Representation<$modelCt>> {
+				public function prepare(model:$modelCt):tink.json.Cached<coconut.json.Representation<$modelCt>> {
 					return switch cache[model] {
-						case null:
-							cache[model] = count++;
-							Payload($obj);
-						case v:
-							Cached(v);
+						case null: cache[model] = $obj;
+						case v: v;
 					}
 				}
 			}

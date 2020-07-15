@@ -25,14 +25,11 @@ class Unserializer {
 			
 			var def = macro class $name {
 				final cache = new Map();
-				var count = 0;
 				public function new(_) {}
-				public function parse(data:coconut.json.Ref<coconut.json.Representation<$modelCt>>):$modelCt {
-					return switch data {
-						case Payload(data):
-							cache[count++] = new $modelTp($obj);
-						case Cached(id):
-							cache[id];
+				public function parse(data:tink.json.Cached<coconut.json.Representation<$modelCt>>):$modelCt {
+					return switch cache[data] {
+						case null: cache[data] = new $modelTp($obj);
+						case v: v;
 					}
 				}
 			}
